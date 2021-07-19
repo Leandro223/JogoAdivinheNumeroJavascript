@@ -3,18 +3,18 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Jogo adivinhe o número</title>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
-        html {
-            
-        }
+
+        html {}
 
         body {
-            width: 50%;
-            max-width: 800px;
+            width: 40%;
+            max-width: 900px;
             min-width: 480px;
             margin: 0 auto;
             background-image: url(advinhafundo.jpg);
@@ -25,6 +25,8 @@
             font-size: 30px;
             color: rgb(7, 7, 7);
             font-family: 'Anton', sans-serif;
+            
+
 
 
         }
@@ -37,26 +39,112 @@
 
         .form {
 
-            font-size: 50px;
+            font-size: 40px;
             color: rgb(253, 253, 0);
             text-align: center;
         }
 
-        .campoPalpite{
+        .campoPalpite {
             height: 25px;
             font-size: 30px;
         }
 
-        
+        .envioPalpite {
+            font-size: 20px;
+            font-family: 'Anton', sans-serif;
+            color: rgb(0, 0, 0);
+        }
 
-        
-
-        
-
-
+        .bg {
+            margin-top: 150px;
+        }
 
 
 
+        .ultimoResultado {
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+                transform: scale(1);
+            }
+
+            51% {
+                opacity: 0;
+                transform: scale(0);
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+
+        @media only screen and (max-device-width: 640px) {
+            body {
+
+                max-width: 640px;
+                min-width: 480px;
+
+
+                background-image: url(advinhafundo.jpg);
+
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+                font-size: 15px;
+                text-align: center;
+
+                font-family: 'Anton', sans-serif;
+
+                text-indent: 0;
+
+                display: table-cell;
+                vertical-align: middle;
+
+
+            }
+
+            .ultimoResultado {
+                color: rgb(255, 255, 255);
+                padding: 3px;
+            }
+
+
+            .form {
+
+                font-size: 10px;
+                color: rgb(253, 253, 0);
+                text-align: center;
+            }
+
+            .campoPalpite {
+                height: 10px;
+                font-size: 15px;
+                width: 30px;
+            }
+
+            .envioPalpite {
+                font-size: 5px;
+                font-family: 'Anton', sans-serif;
+                color: rgb(0, 0, 0);
+
+            }
+
+            .bg {
+                margin-top: 150px;
+            }
+
+
+
+        }
     </style>
 </head>
 
@@ -69,7 +157,7 @@
 
     <div class="form">
         <label for="campoPalpite">Digite seu palpite: </label><input type="text" id="campoPalpite" class="campoPalpite">
-        <input type="submit" value="Enviar palpite" class="envioPalpite" style="font-size: 25px; font-family: 'Anton', sans-serif;">
+        <input type="submit" value="Enviar palpite" class="envioPalpite">
     </div>
 
     <div class="resultadoParas">
@@ -81,7 +169,7 @@
 </body>
 
 <script>
-    
+
     var numeroAleatorio = Math.floor(Math.random() * 100) + 1;
     var palpites = document.querySelector('.palpites');
     var ultimoResultado = document.querySelector('.ultimoResultado');
@@ -103,11 +191,12 @@
             baixoOuAlto.textContent = '';
             configFimDeJogo();
         } else if (contagemPalpites === 5) {
-            ultimoResultado.textContent = '          !!!FIM DE JOGO!!!' + '  O numero é: ' + numeroAleatorio;
+            ultimoResultado.textContent = '!!!FIM DE JOGO!!!' + '  O numero é: ' + numeroAleatorio;
             baixoOuAlto.textContent = '';
             configFimDeJogo();
         } else {
             ultimoResultado.textContent = 'Errado!';
+
             ultimoResultado.style.backgroundColor = 'red';
             if (palpiteUsuario < numeroAleatorio) {
                 baixoOuAlto.textContent = 'Seu palpite foi muito baixo! Continue Tentando...';
@@ -128,7 +217,7 @@
         botaoReinicio.style.minHeight = "50px";
         botaoReinicio.style.fontSize = "25px";
         botaoReinicio.style.textAlign = "center";
-        
+
         botaoReinicio.textContent = 'Iniciar novo jogo';
         document.body.appendChild(botaoReinicio);
         botaoReinicio.addEventListener('click', reiniciarJogo);
@@ -147,6 +236,8 @@
         ultimoResultado.style.backgroundColor = 'white';
         numeroAleatorio = Math.floor(Math.random() * 100) + 1;
     }
+
+
 </script>
 
 </html>
