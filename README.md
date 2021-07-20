@@ -4,3 +4,5 @@
 #### Página do projeto:
 
  https://leandro223.github.io/JogoAdivinheNumeroJavascript/
+ 
+ ![imagem gif](https://github.com/Leandro223/JogoAdivinheNumeroJavascript/blob/main/jogoadivinhe.gif)
